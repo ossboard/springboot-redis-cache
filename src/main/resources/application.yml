@@ -1,0 +1,31 @@
+
+# ex) -Dspring.profiles.active=server|developer
+
+spring:
+    messages:
+        basename: i18n/messages
+        cache-seconds: -1
+        encoding: UTF-8
+
+    mvc:
+        view:
+            prefix: /WEB-INF/views/
+            suffix: .jsp
+    redis:
+        host: redis.server
+        port: 32771
+    cache:
+        redis:
+            cache-null-values: true # Allow caching null values.
+            key-prefix: KONAN_PRE_
+            time-to-live: 5 # Entry expiration. By default the entries never expire.
+            use-key-prefix: true # Whether to use the key prefix when writing to Redis.
+        type: redis
+    test:
+        mockmvc:
+            print: default
+
+---
+spring:
+    profiles: developer
+
